@@ -3,6 +3,12 @@ import streamlit as st
 import numpy as np 
 import json 
 
+# Custom modules 
+
+
+#### Start creating the app 
+
+
 st.title("Address Matching and Normalization App")
 
 # Add an expander for method and task description
@@ -21,18 +27,34 @@ add2 = st.text_input(label="Enter Address 2")
 add1 = add1.lower()
 add2 = add2.lower()
 
-'''Convert terms to a single format'''
+#### Convert terms to a single format
 
 # Read the json data 
 with open('abbreviations.json') as f:
-  data = json.load(f)
+  abb_data = json.load(f)
 
 # Tokenize the address 
 token_add1 = add1.split()
 token_add2 = add2.split()
-st.write(token_add1)
+
+# Iterate through the list and replace any word that is in the abbreviation
+for i in range(len(token_add1)): 
+    if abb_data.get(token_add1[i], 0):
+        token_add1[i] = abb_data[token_add1[i]]
 
 
+for i in range(len(token_add2)): 
+    if abb_data.get(token_add2[i], 0):
+        token_add2[i] = abb_data[token_add2[i]]
+
+# Join the sentences again 
+add1 = " ".join(token_add1)
+add2 = " ".join(token_add2)
+
+#### Fuzzy matching using Levenstein Distance
+
+
+#### Show the sentences 
 st.write("**Address 1:**", add1)
 st.write("**Address 2:**", add2)
 

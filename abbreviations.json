@@ -1,5 +1,6 @@
 {
     "st.":"street", 
     "rd.":"road",
-    "co.":"company"
+    "co.":"company", 
+    "app.": "apartment"
 }
