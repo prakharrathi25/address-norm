@@ -53,8 +53,8 @@ add1 = " ".join(token_add1)
 add2 = " ".join(token_add2)
 
 #### Fuzzy matching using Levenstein Distance
-st.subheader("Calculating the levenstein distance")
 try: 
+    st.subheader("Calculating the levenstein distance")
     distance = levenshtein_ratio_and_distance(add1, add2)
     ratio = levenshtein_ratio_and_distance(add1, add2, ratio_calc = True)
 
