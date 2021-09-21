@@ -1,7 +1,5 @@
 import numpy as np
 
-
-
 def levenshtein_ratio_and_distance(s, t, ratio_calc = False):
     """ levenshtein_ratio_and_distance:
         Calculates levenshtein distance between two strings.
