@@ -54,25 +54,27 @@ add2 = " ".join(token_add2)
 
 #### Fuzzy matching using Levenstein Distance
 try: 
-    st.subheader("Calculating the levenstein distance")
-    distance = levenshtein_ratio_and_distance(add1, add2)
-    ratio = levenshtein_ratio_and_distance(add1, add2, ratio_calc = True)
 
-    st.write("Levenstein distance", distance)
-    st.write("Levenstein match ratio:", ratio)
+    if st.button("Calculate similarity"):
+        st.subheader("Levenshtein distance")
+        distance = levenshtein_ratio_and_distance(add1, add2)
+        ratio = levenshtein_ratio_and_distance(add1, add2, ratio_calc = True)
 
-    #### Fuzzy Wuzzy matching 
-    st.subheader("Fuzzy Match Percentage")
-    fuzz_ratio = fuzz.token_set_ratio(add1, add2)
-    st.write(f"Address match ratio: {fuzz_ratio}% match")
+        st.write("Levenshtein distance", distance)
+        st.write("Levenshtein match ratio:", ratio)
+
+        #### Fuzzy Wuzzy matching 
+        st.subheader("Fuzzy Match Percentage")
+        fuzz_ratio = fuzz.token_set_ratio(add1, add2)
+        st.write(f"Address match ratio: {fuzz_ratio}% match")
 
 
-    #### Show the sentences 
-    st.subheader("Fixed Address format")
-    st.write("**Address 1:**", add1)
-    st.write("**Address 2:**", add2)
+        #### Show the sentences 
+        st.subheader("Fixed Address format")
+        st.write("**Address 1:**", add1)
+        st.write("**Address 2:**", add2)
 except: 
-    "Please enter some text"
+    st.write("Please enter some text")
 
 
 
